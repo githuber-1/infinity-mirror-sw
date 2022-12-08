@@ -6,48 +6,31 @@ from enum import Enum
 class Mode(Enum):
     pass
 
-class System():
-    def __init__():
+class infinityMirror():
+    """
+    Application level class for managing infinity mirror clock, LEDs, and Peripherals
+    """
+    def __init__(self):
         self.clock = Clock()
         self.leds = LEDController()
         self.peripherals = Peripherals()
 
     def displayTime(self) -> None:
+        # TODO Update to utilize palette
         now = self.clock.getTime()
-        hour = now[0]
-        minute = now[1]
-        second = now[2]
-        
-        for i in range(self.num_leds):
-            self.leds[i] = (0, 0, 0)
-        
-        self.leds[hour] = (255, 255, 255)
-        self.leds[hour-1] = (255, 255, 255)
-        self.leds[hour+1] = (255, 255, 255)
-        self.leds[minute] = (255, 0, 0)
-        self.leds[second] = (0, 255, 255)
-        self.leds.write()
-
-    def getMode(self):
-        """
-        Get rotary encoder value, map that to mode
-        """
-        self.peripherals.readEncoder()
-        self.peripherals.readButton()
+        self.leds.ledClock(now)
 
 
 def main():
     # Initialization on boot up
-    sys = System()
-    # init RTC time
-    sys.clock.setRTCStartTime()
+    infinity = infinityMirror()
+    # init RTC time using SNTP
+    infinity.clock.setRTCStartTime()
 
     # Loop
     while True:
-        sys.getMode()
-        
-
-
+        # Mode handled by interrupts
+        pass
 
 
 if __name__ == "__main__":
