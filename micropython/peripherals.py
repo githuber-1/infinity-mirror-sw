@@ -17,6 +17,7 @@ class Peripherals():
     TODO: Incorporate Mutexes as need to protect R/W of Encoder data
     TODO: Test rotaryEncoder module, make async (look at link above)
     Class for handling rotary encoder and button
+    rotary encoder implements interrupts on both clk and dt pins
     """
     def __init__(self, enc_a_pin, enc_b_pin, btn_pin):
         rotaryEncoder = RotaryIRQ(pin_num_clk=enc_a_pin,

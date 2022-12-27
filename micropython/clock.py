@@ -17,6 +17,8 @@ class Clock():
     #LEDS = ledController(13, 60)
 
     def __init__(self) -> None:
+        # TODO make timezone configurable. Use long button press to set current time.
+        # store tz in flash memory?
         self._tz = pytz.timezone('America/Denver')
         #self._rtc = RTC()
     

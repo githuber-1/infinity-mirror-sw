@@ -5,12 +5,12 @@ import datetime
 # TODO Color Palette Control
 
 class LEDController:
-    def __init__(self, led_pin: int, num_leds: int):
-        self.num_leds = num_leds
+    NUM_LEDS = 60
+    def __init__(self, led_pin: int):
         
         # Initalize led_pin
         Pin(13, Pin.Out)
-        self.leds = NeoPixel(Pin(led_pin), self.num_leds)
+        self.leds = NeoPixel(Pin(led_pin), self.NUM_LEDS)
         
         self.palette = None
 
@@ -25,7 +25,7 @@ class LEDController:
         minute = time[1]
         second = time[2]
         
-        for i in range(self.num_leds):
+        for i in range(self.NUM_LEDS):
             self.leds[i] = (0, 0, 0)
         
         self.leds[hour] = (255, 255, 255)

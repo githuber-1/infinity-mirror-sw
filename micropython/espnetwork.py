@@ -1,8 +1,9 @@
 import network
 
-class espNetwork():
+class ESPNetwork():
     """
-    TODO: Add SSID and PW - Use user input? Hide PW Module?
+    TODO: Add SSID and PW. Store them in flash memory.
+    TODO: Implement disconnect
     """
     SSID = ""
     PW = ""
