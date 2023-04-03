@@ -1,17 +1,17 @@
 import network
 
-class ESPNetwork():
+class EspNetwork():
     """
     TODO: Add SSID and PW. Store them in flash memory.
     TODO: Implement disconnect
     """
-    SSID = ""
-    PW = ""
+    SSID = "Hooligan"
+    PW = "Bigchocolatetaco"
     
     def __init__(self):
         # Connect to WiFi
         self.timeout = 1 
-        self.connect()
+        #self.connect()
         
     def connect(self) -> bool:
         self.station = network.WLAN(network.STA_IF)
@@ -25,4 +25,5 @@ class ESPNetwork():
 
     def disconnect(self) -> bool:
         pass
+
 

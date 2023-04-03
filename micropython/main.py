@@ -2,7 +2,7 @@ from clock import Clock
 from peripherals import Peripherals
 from ledController import LEDController
 from espnetwork import ESPNetwork
-import time
+import date
 
 # TODO implement secondary function for encoder based on button press
 
@@ -51,7 +51,8 @@ def main():
     # main loop
     while True:
         # get mode from encoder value
-        enc_val = infinity.peripherals.rotaryEncoder.value()
+        # disable ISR during read to avoid race condition
+        enc_val = infinity.peripherals.rotaryEncoder.btnVal()
         
         if enc_val == infinity.MODE_CLOCK:
             infinity.clock()
