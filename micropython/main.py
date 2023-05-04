@@ -22,7 +22,7 @@ class infinityMirror():
     NTP_ATTEMPTS = 3
     BLE_TIME_MS = 3000
     DEBOUNCE_TIME_MS = 20
-    LOOP_DELAY_MS = (1 / 20) * 1000
+    LOOP_DELAY_MS = (1 / 50) * 1000
     BLE_LOOP_DELAY_MS = 500
 
     def __init__(self):
@@ -69,7 +69,7 @@ class infinityMirror():
         elif btn_val == 1 and self.btn_was == 0 and utime.ticks_ms() - self.btn_dwn_time > self.DEBOUNCE_TIME_MS and utime.ticks_ms() - self.btn_dwn_time < self.BLE_TIME_MS:
             self.led_mode += 1
             print(f'get mode: {self.led_mode} ')
-            if self.led_mode > self.NUM_MODES:
+            if self.led_mode >= self.NUM_MODES:
                 self.led_mode = 0
                 
         # button was released after BLE period

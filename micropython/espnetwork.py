@@ -9,7 +9,6 @@ class EspNetwork():
     PW = ""
     
     def __init__(self):
-        # Connect to WiFi
         self.timeout = 1 
         
     def connect(self) -> bool:

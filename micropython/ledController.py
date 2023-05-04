@@ -23,13 +23,16 @@ class LedController:
         self.palette = palette
 
     def led_clock(self, time, enc_val) -> None:
-        hour = (time[0] * 5) - 31
+        hour = time[0]
+        if hour > 12:
+            hour = hour - 12
+        hour = (hour * 5) - 31
         minute = time[1] - 31
         second = time[2] - 31
         start_color = enc_val * self.ENC_TO_HSV_MAP
         
         hour_color = self.colorHSV(start_color, 255, 255)
-        min_sec_color = self.colorHSV(start_color - 2500, 255, 255)
+        min_sec_color = self.colorHSV(start_color, 150, 200)
 
         for i in range(self.NUM_LEDS):
             self.leds[i] = (0, 0, 0)
@@ -203,7 +206,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
