@@ -16,9 +16,6 @@ class LedController:
         
         self.palette = None
 
-    def rainbow(self):
-        pass
-
     def set_palette(self, palette):
         self.palette = palette
 
