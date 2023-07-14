@@ -44,8 +44,8 @@ class LedController:
     def fire(self, enc_val) -> None:
         start_color = enc_val * self.ENC_TO_HSV_MAP
         for i in range(self.NUM_LEDS):
-            #color = self.colorHSV(5000, random.randrange(0, 255), random.randrange(0, 255))
-            color = self.colorHSV(random.randrange(start_color, start_color + 2000), 255, random.randrange(0, 255))
+            color = self.colorHSV(random.randrange(start_color, start_color + 2000), 255, 
+                                  random.randrange(0, 255))
             self.leds[i] = color
         self.leds.write()
     
@@ -83,7 +83,7 @@ class LedController:
         saturation = math.floor( 255 - (enc_val * 4) )
         led_num = 0
         for i in range(start_led, start_led - 59, -1):
-            hue = math.floor( ( self.MAX_HUE / 60) * led_num )
+            hue = math.floor( ( self.MAX_HUE / 60 ) * led_num )
             color = self.colorHSV(hue, saturation, 255)
             self.leds[i] = color
             led_num += 1
@@ -123,8 +123,7 @@ class LedController:
         
         return first_color
         
-    
-    def ble(self) -> None:
+    def time_set(self) -> None:
         current_state = self.leds[-1]
         if current_state[2] > 0:
             for i in range(self.NUM_LEDS):

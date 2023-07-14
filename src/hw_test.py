@@ -1,11 +1,9 @@
-import time, utime, ntptime
+import time, utime
 from peripherals import Peripherals
-from espnetwork import EspNetwork
 from ledController import LedController
 
 class Tester():
     def __init__(self):
-        self.espNetwork = EspNetwork()
         self.encoderTester = Peripherals(34, 35, 25)
         self.ledController = LedController(33)
         self.timezone = -6
@@ -14,28 +12,18 @@ class Tester():
     def convert_time(self):
         newTime = utime.localtime(utime.mktime(utime.localtime()) + self.timezone * 3600)
         self.time = [newTime[3], newTime[4], newTime[5]]
-    
-    def test_wifi(self):
-        print('\n---Testing WiFi Connection---')
-        self.espNetwork.connect()
-        if self.espNetwork.station.isconnected():
-            print(f'	WiFi test passed')
-            return True
-        print(f'	WiFi test failed')
-        return False
 
     def test_clock(self):
-        print('\n---Testing SNTP / Clock---')
+        print('\n---Testing Clock---')
         currentTime = utime.localtime()
-        ntptime.settime()
         self.convert_time()
 
         print(f'Current time is {self.time[0]}:{self.time[1]}:{self.time[2]}')
         resp = input('If time is correct, enter "y", if not, enter "n": ')
         if resp == "y":
-            print(f'	SNTP / Clock test passed')
+            print(f'    Clock test passed')
             return True
-        print(f'	SNTP / Clock test failed')
+        print(f'    Clock test failed')
         return False
 
     def test_button(self):
@@ -76,11 +64,10 @@ class Tester():
         if resp == "y":
             print(f'	LED Test Passed')
             return True
-        print(f'LED Test Failed')
+        print(f'    LED Test Failed')
         return False
 
     def checkout(self):
-        self.test_wifi()
         self.test_clock()
         self.test_button()
         self.test_encoder()
