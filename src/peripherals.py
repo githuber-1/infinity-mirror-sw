@@ -20,11 +20,11 @@ class Peripherals():
     Class for handling rotary encoder and button
     rotary encoder implements interrupts on both clk and dt pins
     """
-    def __init__(self, enc_a_pin, enc_b_pin, btn_pin):
+    def __init__(self, enc_a_pin, enc_b_pin, max_enc_val, btn_pin):
         self.rotaryEncoder = RotaryIRQ(pin_num_clk=enc_a_pin,
                                   pin_num_dt=enc_b_pin,
                                   min_val=0,
-                                  max_val=5,
+                                  max_val=max_enc_val,
                                   reverse=False,
                                   range_mode=RotaryIRQ.RANGE_WRAP)
         
