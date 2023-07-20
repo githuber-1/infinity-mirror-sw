@@ -4,7 +4,7 @@ node {
         checkout scm
     }
 
-    def environment = docker.build("infinity-sw", "-f ${dockerfile_path} .")
+    def environment = docker.build("infinity-sw")
     sh "mkdir jenkins_output"
 
     try {
