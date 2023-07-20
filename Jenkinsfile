@@ -8,7 +8,7 @@ node {
     sh "mkdir jenkins_output"
 
     try {
-        environment.inside('-v $WORKSPACE/jenkins_output:home/jenkins') {
+        environment.inside('-v $WORKSPACE/jenkins_output:/home/ian/jenkins') {
             stage ("Build") {
                 // do stuff here
             }
