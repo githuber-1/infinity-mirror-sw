@@ -22,6 +22,7 @@ node {
                     """
                 } finally {
                     sh 'echo "Done testing..."'
+                    sh 'ls -R'
                     junit('$WORKSPACE/jenkins_output/test_report.xml')
                 }
 
