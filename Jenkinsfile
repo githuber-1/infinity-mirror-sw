@@ -16,6 +16,7 @@ node {
             stage ("Test") {
                 try {
                     sh 'echo "Testing..."'
+                    sh 'whoami'
                     sh """
                     #!/bin/bash
                     python3 -m pytest --junitxml=/home/jenkins/test_report.xml  
