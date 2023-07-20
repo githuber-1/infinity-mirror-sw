@@ -18,7 +18,7 @@ node {
                     sh 'echo "Testing..."'
                     sh """
                     #!/bin/bash
-                    python3 -m pytest --junitxml=/home/jenkins/test_report.xml  
+                    python3 -m pytest --junitxml=/home/ian/jenkins/test_report.xml  
                     """
                 } finally {
                     sh 'echo "Done testing..."'
