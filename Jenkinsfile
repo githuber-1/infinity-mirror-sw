@@ -22,8 +22,6 @@ node {
                     """
                 } finally {
                     sh 'echo "Done testing..."'
-                    sh 'ls -R'
-                    sh 'cat ./jenkins_output/test_report.xml'
                     junit('jenkins_output/test_report.xml')
                 }
 
